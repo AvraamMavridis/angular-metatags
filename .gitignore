@@ -1,2 +1,4 @@
 /dummy-app/node_modules
 /dummy-app/app/bower_components
+/dummy-app/dist
+.tmp/

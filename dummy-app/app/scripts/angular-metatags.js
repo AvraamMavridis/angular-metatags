@@ -1,10 +1,12 @@
-
+/**
+ * Author Avraam Mavridis (avr.mav@gmail.com)
+ * https://github.com/AvraamMavridis
+ */
 angular.module('metatags', [])
   .provider('MetaTags',function(){
 
     var routes = {}
     var otherwise = {}
-    var info = {}
 
     this.when = function(path, metatags){
       routes[path] = metatags
@@ -17,7 +19,7 @@ angular.module('metatags', [])
     }
 
     var getMetaTags = function(path){
-
+      var info = {};
       var routesArray = Object.keys(routes);
       var routesLength = routesArray.length;
       var placeholder = {};

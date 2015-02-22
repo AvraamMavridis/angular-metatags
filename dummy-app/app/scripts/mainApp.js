@@ -9,7 +9,6 @@ var myApp = angular.module('myApp', ['ngRoute', // Route service
 
 myApp.config(['$routeProvider','MetaTagsProvider', function($routeProvider, MetaTagsProvider) {
 
-        console.log(MetaTagsProvider);
         // Login
         $routeProvider.when('/page1/:something/:somethingelse', {
             templateUrl: 'partials/page1.html',
@@ -28,29 +27,35 @@ myApp.config(['$routeProvider','MetaTagsProvider', function($routeProvider, Meta
         });
 
         MetaTagsProvider
-          .when('/', {
+          .when('/page1', {
             title: 'Great',
-            description: 'Cool'
+            description: 'Cool',
+            fb_title: 'My title',
+            fb_site_name: 'My site name',
+            fb_url: 'www.blablabla.blabla', 
+            fb_description: 'Cool website',
+            fb_type: 'Facebook type',
+            fb_image: 'an_image.jpg' 
           })
-          .when('/page1/:something/:somethingelse',{
-            title: 'Page 1 :something',
-            description: function(arg1, arg2){
-                console.log('arg1', arg1);
-                console.log('arg2', arg2);
-                return 'COOOOOOOL';
+          .when('/page1/:parameter1/:parameter2',{
+            title: 'Books of :parameter1 by :parameter2',
+            description: function(parameter1, parameter2){
+                return 'We have great books of ' + parameter1.toUpperCase() + ' by the amazing :parameter2';
+            },
+            robots: 'index, follow',
+            keywords: function(parameter1){
+              var keywords = ['history', 'art', 'music']
+              keywords.push(parameter1);
+              return keywords.join(' ');
             }
           })
-          .when('/page2',{
-            title: 'Page 2',
+          .when('/page2/:parameter1',{
+            title: 'Page 2 of :parameter1',
             description: 'Another great page'
-          })
-          .when(/^foo(bar)?$/i, {
-            title: 'Regex',
-            description: 'Anothere regex'
           })
           .otherwise({
             title: 'otherwise',
-            description: 'Another greate place'
+            description: 'Another great page'
           })
     }]);
 
