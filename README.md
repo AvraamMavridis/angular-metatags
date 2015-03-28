@@ -93,18 +93,18 @@ myApp.run(function(MetaTags){
 
 You can use the metatags in our html like this:
 ```html
-  <title>{{ meta.title }}</title>
-  <meta name="description" content="{{ meta.description }}" >
-  <meta name="robots" content="{{ meta.robots }}" >
-  <meta name="keywords" content="{{ meta.keywords }}" >
+  <title>{{ metatags.title }}</title>
+  <meta name="description" content="{{ metatags.description }}" >
+  <meta name="robots" content="{{ metatags.robots }}" >
+  <meta name="keywords" content="{{ metatags.keywords }}" >
   <!-- Facebook related metatags -->
-  <meta property="fb:app_id"          content="{{ meta.fb_app_id }}" > 
-  <meta property="og:url"             content="{{ meta.fb_url }}"  > 
-  <meta property="og:title"           content="{{ meta.fb_title }}" > 
-  <meta property="og:image"           content="{{ meta.fb_image }}"  > 
-  <meta property="og:description"     content="{{ meta.fb_description }}"  >
-  <meta property="og:site_name"       content="{{ meta.fb_site_name }}" >
-  <meta property="og:type"            content="{{ meta.fb_type }}" >
+  <meta property="fb:app_id"          content="{{ metatags.fb_app_id }}" > 
+  <meta property="og:url"             content="{{ metatags.fb_url }}"  > 
+  <meta property="og:title"           content="{{ metatags.fb_title }}" > 
+  <meta property="og:image"           content="{{ metatags.fb_image }}"  > 
+  <meta property="og:description"     content="{{ metatags.fb_description }}"  >
+  <meta property="og:site_name"       content="{{ metatags.fb_site_name }}" >
+  <meta property="og:type"            content="{{ metatags.fb_type }}" >
 ```
 
 ## Angular and SEO

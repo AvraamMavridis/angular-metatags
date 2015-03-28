@@ -5,18 +5,18 @@
 angular.module('metatags', [])
   .provider('MetaTags',function(){
 
-    var routes = {}
-    var otherwise = {}
+    var routes = {};
+    var otherwise = {};
 
     this.when = function(path, metatags){
-      routes[path] = metatags
+      routes[path] = metatags;
       return this;
-    }
+    };
 
     this.otherwise = function(metatags){
-      otherwise = metatags
+      otherwise = metatags;
       return this;
-    }
+    };
 
     var getMetaTags = function(path){
       var info = {};
@@ -28,15 +28,15 @@ angular.module('metatags', [])
 
         var routeName = routesArray[i];
         var routeMetaTagsObject = routes[routeName];
-        var routeMetaTagsArray = Object.keys(routeMetaTagsObject); 
+        var routeMetaTagsArray = Object.keys(routeMetaTagsObject);
         var routeArgs = routeName.split('/').filter(Boolean);
         var routeArgsLength = routeArgs.length;
         var pathArgs = path.split('/').filter(Boolean);
         var pathArgsLength = pathArgs.length;
-        var flag = true;
+        var flag1 = true;
+        var flag2 = false;
 
         if(routeArgsLength !== pathArgsLength){
-          flag = false;
           continue;
         }
 
@@ -46,14 +46,18 @@ angular.module('metatags', [])
             continue;
           }
           if (pathArgs[j] !== routeArgs[j]){
-            flag = false;
-            placeholder = [];
+            placeholder = {};
+            flag1 = false;
             break;
           }
         }
 
         var routeMetaTagsLength = routeMetaTagsArray.length;
-        if(flag){
+        var placeHolderLength = Object.keys(placeholder).length;
+
+
+
+        if(placeHolderLength > 0){
           for(var ii = 0; ii < routeMetaTagsLength; ii++){
             var tag = routeMetaTagsArray[ii];
             if(typeof(routeMetaTagsObject[tag]) === 'string')
@@ -72,21 +76,31 @@ angular.module('metatags', [])
               info[t] = info[t].replace(placeholder[p], p);
             }
           }
+            return info;
         }
         else{
-          for(var o in otherwise){
-            info[o] = otherwise[o];
-          }
+            for (var o in otherwise) {
+                info[o] = otherwise[o];
+            }
+
+            if (routeArgs[0] === pathArgs[0]) {
+                flag2 = true;
+                break;
+            }
         }
-      return info;
       }
+        if (flag1 && flag2) {
+            for (var o in routeMetaTagsObject) {
+                info[o] = routeMetaTagsObject[o];
+            }
+            return info;
+        } else {
+            return info;
+        }
+    };
 
 
-    }
-
-
-    this.$get = ["$rootScope", "$location", 
-      function MetaTagsFactory($rootScope, $location){
+    this.$get = ["$rootScope", "$location", function ($rootScope, $location){
 
         var update = function(){
           path = $location.path();
@@ -94,7 +108,7 @@ angular.module('metatags', [])
           for(var tt in info){
             $rootScope.metatags[tt] = info[tt];
           }
-        }
+        };
 
         return {
           initialize: function(){

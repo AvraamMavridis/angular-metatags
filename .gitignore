@@ -2,3 +2,4 @@
 /dummy-app/app/bower_components
 /dummy-app/dist
 .tmp/
+.idea/
