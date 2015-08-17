@@ -83,7 +83,7 @@ angular.module('metatags', [])
                 info[o] = otherwise[o];
             }
 
-            if (routeArgs[0] === pathArgs[0]) {
+            if (routeArgs[routeArgsLength - 1] === pathArgs[routeArgsLength - 1]) {
                 flag2 = true;
                 break;
             }
