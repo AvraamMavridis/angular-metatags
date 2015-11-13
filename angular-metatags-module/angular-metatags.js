@@ -113,7 +113,12 @@ angular.module('metatags', [])
         return {
           initialize: function(){
             $rootScope.metatags = {};
-            $rootScope.$on('$routeChangeSuccess', update);
+                try {
+                  angular.module('ngRoute');
+                  $rootScope.$on('$routeChangeSuccess', update);
+                } catch(err) {
+                  $rootScope.$on('$stateChangeSuccess', update);
+                }
           }
         }
     }];
