@@ -1,6 +1,6 @@
 # **Angular MetaTags module**
 
-Module to dynamically provide metatags based on the path.
+Module to dynamically provide metatags based on the path. After this [PR](https://github.com/AvraamMavridis/angular-metatags/pull/5) it supports both ngRoute and ui-router (only simple states).
 
 ## **How to use it**
 
