@@ -4,7 +4,7 @@ Module to dynamically provide metatags based on the path. After this [PR](https:
 
 ## **How to use it**
 
-####Include `angular-metatags.js` or `angular-metatags.min.js` to your html file before your app script and after the angular's core script
+#### Include `angular-metatags.js` or `angular-metatags.min.js` to your html file before your app script and after the angular's core script
 
 ```html
 <script src="bower_components/angular/angular.js"></script>
@@ -13,13 +13,13 @@ Module to dynamically provide metatags based on the path. After this [PR](https:
 <script src="scripts/mainApp.js"></script>
 ```
 
-####Include the module in your app
+#### Include the module in your app
 
 ```js
 var myApp = angular.module('myApp', ['ngRoute','metatags']);
 ```
 
-####Inject the MetaTagsProvider in the config and define your meta tags
+#### Inject the MetaTagsProvider in the config and define your meta tags
 ```js
 myApp.config(['$routeProvider','MetaTagsProvider', function($routeProvider, MetaTagsProvider) {
 
@@ -83,13 +83,13 @@ $rootScope.metatags =  {
   keywords: "history art music geography" 
 }
 ```
-####Initialize the provider on your application run
+#### Initialize the provider on your application run
 ```js
 myApp.run(function(MetaTags){
     MetaTags.initialize();
 });
 ```
-####Include the metatags in your html
+#### Include the metatags in your html
 
 You can use the metatags in our html like this:
 ```html
