@@ -1,5 +1,7 @@
 # **Angular MetaTags module**
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/AvraamMavridis/angular-metatags.svg)](https://greenkeeper.io/)
+
 Module to dynamically provide metatags based on the path. After this [PR](https://github.com/AvraamMavridis/angular-metatags/pull/5) it supports both ngRoute and ui-router (only simple states).
 
 ## **How to use it**
