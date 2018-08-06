@@ -1,0 +1,9 @@
+{
+  "groups": {
+    "default": {
+      "packages": [
+        "dummy-app/package.json"
+      ]
+    }
+  }
+}
